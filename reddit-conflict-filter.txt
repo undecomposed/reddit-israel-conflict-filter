@@ -1,0 +1,137 @@
+[Adblock Plus 3.13]
+! Title: Reddit Israel/Palestine topic suppression filter
+! Version: 2026-04-22
+! Expires: 1 day
+! Description: Hides Reddit posts, subreddits, and comments matching configured blocked keywords.
+
+! Edit this regex in all rules when you want to add or remove keywords:
+! (?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)
+
+! Direct subreddit blocking by subreddit path
+||reddit.com/r/*Israel*$document
+||reddit.com/r/*Palestin*$document
+||reddit.com/r/*Gaza*$document
+||reddit.com/r/*WestBank*$document
+||reddit.com/r/*westbank*$document
+||reddit.com/r/*west_bank*$document
+||reddit.com/r/*genocide*$document
+||reddit.com/r/*zio*$document
+||reddit.com/r/*idf*$document
+||reddit.com/r/*iof*$document
+||reddit.com/r/*Netanyah*$document
+||reddit.com/r/*aipac*$document
+
+! Hide post cards whose title contains a blocked keyword
+reddit.com#?#shreddit-post:has([slot="title"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#.Post:has(h3:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#.thing:has(a.title:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+
+! Hide post cards from matching subreddits in feeds, search, and recommendations
+reddit.com#?#shreddit-post:has(a[href^="/r/"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#.Post:has(a[data-click-id="subreddit"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#.thing:has(a.subreddit:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com##shreddit-post[subreddit-prefixed-name*="Israel" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="Palestin" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="Gaza" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="West_Bank" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="West-Bank" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="genocide" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="zio" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="idf" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="iof" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="Netanyah" i]
+reddit.com##shreddit-post[subreddit-prefixed-name*="aipac" i]
+reddit.com##shreddit-post[subreddit-name*="Israel" i]
+reddit.com##shreddit-post[subreddit-name*="Palestin" i]
+reddit.com##shreddit-post[subreddit-name*="Gaza" i]
+reddit.com##shreddit-post[subreddit-name*="West_Bank" i]
+reddit.com##shreddit-post[subreddit-name*="West-Bank" i]
+reddit.com##shreddit-post[subreddit-name*="genocide" i]
+reddit.com##shreddit-post[subreddit-name*="zio" i]
+reddit.com##shreddit-post[subreddit-name*="idf" i]
+reddit.com##shreddit-post[subreddit-name*="iof" i]
+reddit.com##shreddit-post[subreddit-name*="Netanyah" i]
+reddit.com##shreddit-post[subreddit-name*="aipac" i]
+reddit.com##shreddit-post[permalink*="/r/israel" i]
+reddit.com##shreddit-post[permalink*="/r/palestin" i]
+reddit.com##shreddit-post[permalink*="/r/gaza" i]
+reddit.com##shreddit-post[permalink*="/r/west_bank" i]
+reddit.com##shreddit-post[permalink*="/r/west-bank" i]
+reddit.com##shreddit-post[permalink*="/r/genocide" i]
+reddit.com##shreddit-post[permalink*="/r/zio" i]
+reddit.com##shreddit-post[permalink*="/r/idf" i]
+reddit.com##shreddit-post[permalink*="/r/iof" i]
+reddit.com##shreddit-post[permalink*="/r/netanyah" i]
+reddit.com##shreddit-post[permalink*="/r/aipac" i]
+reddit.com##shreddit-post[content-href*="/r/israel" i]
+reddit.com##shreddit-post[content-href*="/r/palestin" i]
+reddit.com##shreddit-post[content-href*="/r/gaza" i]
+reddit.com##shreddit-post[content-href*="/r/west_bank" i]
+reddit.com##shreddit-post[content-href*="/r/west-bank" i]
+reddit.com##shreddit-post[content-href*="/r/genocide" i]
+reddit.com##shreddit-post[content-href*="/r/zio" i]
+reddit.com##shreddit-post[content-href*="/r/idf" i]
+reddit.com##shreddit-post[content-href*="/r/iof" i]
+reddit.com##shreddit-post[content-href*="/r/netanyah" i]
+reddit.com##shreddit-post[content-href*="/r/aipac" i]
+reddit.com##shreddit-post[domain*="israel" i]
+reddit.com##shreddit-post[domain*="palestin" i]
+reddit.com##shreddit-post[domain*="gaza" i]
+reddit.com##shreddit-post[domain*="west_bank" i]
+reddit.com##shreddit-post[domain*="west-bank" i]
+reddit.com##shreddit-post[domain*="genocide" i]
+reddit.com##shreddit-post[domain*="zio" i]
+reddit.com##shreddit-post[domain*="idf" i]
+reddit.com##shreddit-post[domain*="iof" i]
+reddit.com##shreddit-post[domain*="netanyah" i]
+reddit.com##shreddit-post[domain*="aipac" i]
+
+! Hide subreddit/community cards and search entries with matching names
+reddit.com#?#faceplate-search-result:has(a[href^="/r/"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#article:has(a[href^="/r/"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#div:has(> a[href^="/r/"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+
+! Search result cards and previews on current Reddit
+reddit.com#?#article:has(a[href*="/comments/"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#article:has(a[href*="/comments/"]):has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+reddit.com#?#search-telemetry-tracker article:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+reddit.com#?#article:has(a[href*="/comments/"][href*="Israel" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="Palestin" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="Gaza" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="West_Bank" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="West-Bank" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="genocide" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="zio" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="idf" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="iof" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="Netanyah" i])
+reddit.com#?#article:has(a[href*="/comments/"][href*="AIPAC" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href^="/r/"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="Israel" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="Palestin" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="Gaza" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="West_Bank" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="West-Bank" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="genocide" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="zio" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="idf" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="iof" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="Netanyah" i])
+reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="AIPAC" i])
+reddit.com#?#search-telemetry-tracker:has(> div[data-testid="search-post-with-content-preview"]):has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+
+! Hide comments whose body contains a blocked keyword
+reddit.com#?#shreddit-comment:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+reddit.com#?#shreddit-comment:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#faceplate-comment:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#div[slot="comment"]:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#div[id$="-comment-rtjson-content"]:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#.Comment:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+reddit.com#?#.entry:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+
+! Hide inbox notifications whose title or body contains a blocked keyword
+reddit.com#?#notification-item:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+reddit.com#?#notification-item:has([data-testid="title"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#notification-item:has([data-testid="body"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#rpl-inbox-row:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
