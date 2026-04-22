@@ -34,12 +34,17 @@ How to add more keywords:
 3. Add any needed literal matches for Reddit metadata attributes where the file already repeats keywords.
 4. Reload the custom filter list in your blocker.
 
-How to use it:
+How to add it to uBlock Origin:
 
-1. Open your custom filters in uBlock Origin or AdGuard.
-2. Import or paste the contents of `reddit-conflict-filter.txt`.
-3. Apply changes.
-4. Reload Reddit pages that were already open.
+1. Click the uBlock Origin icon.
+2. Click the gear icon labeled Open the dashboard.
+3. Open the Filter lists tab.
+4. Click `Import...` at the very bottom of the list.
+5. Paste `https://raw.githubusercontent.com/undecomposed/reddit-israel-conflict-filter/refs/heads/main/reddit-conflict-filter.txt`.
+6. Click Apply changes at the top.
+7. Reload any Reddit pages that were already open.
+
+This adds the filter list as a subscribed list in uBlock Origin.
 
 Known limitations:
 
