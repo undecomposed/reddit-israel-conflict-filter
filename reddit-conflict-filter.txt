@@ -8,6 +8,8 @@
 ! (?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)
 
 ! Direct subreddit blocking by subreddit path
+||reddit.com/r/Israel*$document
+||reddit.com/r/israel_bm*$document
 ||reddit.com/r/*Israel*$document
 ||reddit.com/r/*Palestin*$document
 ||reddit.com/r/*Gaza*$document
@@ -31,6 +33,7 @@ reddit.com#?#shreddit-post:has(a[href^="/r/"]:has-text(/(?:\bIsrael\b|\bPalestin
 reddit.com#?#.Post:has(a[data-click-id="subreddit"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
 reddit.com#?#.thing:has(a.subreddit:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
 reddit.com##shreddit-post[subreddit-prefixed-name*="Israel" i]
+reddit.com##shreddit-post[subreddit-prefixed-name="r/israel_bm" i]
 reddit.com##shreddit-post[subreddit-prefixed-name*="Palestin" i]
 reddit.com##shreddit-post[subreddit-prefixed-name*="Gaza" i]
 reddit.com##shreddit-post[subreddit-prefixed-name*="West_Bank" i]
@@ -42,6 +45,7 @@ reddit.com##shreddit-post[subreddit-prefixed-name*="iof" i]
 reddit.com##shreddit-post[subreddit-prefixed-name*="Netanyah" i]
 reddit.com##shreddit-post[subreddit-prefixed-name*="aipac" i]
 reddit.com##shreddit-post[subreddit-name*="Israel" i]
+reddit.com##shreddit-post[subreddit-name="israel_bm" i]
 reddit.com##shreddit-post[subreddit-name*="Palestin" i]
 reddit.com##shreddit-post[subreddit-name*="Gaza" i]
 reddit.com##shreddit-post[subreddit-name*="West_Bank" i]
@@ -53,6 +57,7 @@ reddit.com##shreddit-post[subreddit-name*="iof" i]
 reddit.com##shreddit-post[subreddit-name*="Netanyah" i]
 reddit.com##shreddit-post[subreddit-name*="aipac" i]
 reddit.com##shreddit-post[permalink*="/r/israel" i]
+reddit.com##shreddit-post[permalink*="/r/israel_bm" i]
 reddit.com##shreddit-post[permalink*="/r/palestin" i]
 reddit.com##shreddit-post[permalink*="/r/gaza" i]
 reddit.com##shreddit-post[permalink*="/r/west_bank" i]
@@ -64,6 +69,7 @@ reddit.com##shreddit-post[permalink*="/r/iof" i]
 reddit.com##shreddit-post[permalink*="/r/netanyah" i]
 reddit.com##shreddit-post[permalink*="/r/aipac" i]
 reddit.com##shreddit-post[content-href*="/r/israel" i]
+reddit.com##shreddit-post[content-href*="/r/israel_bm" i]
 reddit.com##shreddit-post[content-href*="/r/palestin" i]
 reddit.com##shreddit-post[content-href*="/r/gaza" i]
 reddit.com##shreddit-post[content-href*="/r/west_bank" i]
