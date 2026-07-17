@@ -1,6 +1,6 @@
 [Adblock Plus 3.13]
 ! Title: Reddit Israel/Palestine topic suppression filter
-! Version: 2026-04-22
+! Version: 2026-07-17
 ! Expires: 1 day
 ! Description: Hides Reddit posts, subreddits, and comments matching configured blocked keywords.
 
@@ -127,12 +127,11 @@ reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/c
 reddit.com#?#div[data-testid="search-post-with-content-preview"]:has(a[href*="/comments/"][href*="AIPAC" i])
 reddit.com#?#search-telemetry-tracker:has(> div[data-testid="search-post-with-content-preview"]):has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
 
-! Hide comments whose body contains a blocked keyword
-reddit.com#?#shreddit-comment:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
-reddit.com#?#shreddit-comment:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
-reddit.com#?#faceplate-comment:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
-reddit.com#?#div[slot="comment"]:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
-reddit.com#?#div[id$="-comment-rtjson-content"]:has([id$="-post-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+! Hide comments whose OWN body contains a blocked keyword.
+! Match the comment body element (…-comment-rtjson-content) and hide only its
+! owning shreddit-comment via :upward. Matching shreddit-comment directly with
+! :has-text bubbles up through nested reply comments and collapses whole threads.
+reddit.com#?#[id$="-comment-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i):upward(shreddit-comment)
 reddit.com#?#.Comment:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
 reddit.com#?#.entry:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
 
