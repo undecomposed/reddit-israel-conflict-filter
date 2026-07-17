@@ -1,6 +1,6 @@
 [Adblock Plus 3.13]
 ! Title: Reddit Israel/Palestine topic suppression filter
-! Version: 2026-07-17
+! Version: 2026-07-17b
 ! Expires: 1 day
 ! Description: Hides Reddit posts, subreddits, and comments matching configured blocked keywords.
 
@@ -135,8 +135,19 @@ reddit.com#?#[id$="-comment-rtjson-content"]:has-text(/(?:\bIsrael\b|\bPalestin\
 reddit.com#?#.Comment:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
 reddit.com#?#.entry:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
 
-! Hide inbox notifications whose title or body contains a blocked keyword
+! Hide inbox notifications whose title or body contains a blocked keyword.
+! notification-item wraps rpl-inbox-row, which wraps a data-testid="title" and
+! data-testid="body" span.line-clamp-2 pair holding the actual text. Ancestor
+! :has-text() rules are kept as a fast path, but they've proven unreliable on
+! this markup, so leaf-level :has-text():upward(notification-item) variants are
+! added as a redundant path in case the ancestor form fails to fire.
 reddit.com#?#notification-item:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
 reddit.com#?#notification-item:has([data-testid="title"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
 reddit.com#?#notification-item:has([data-testid="body"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
 reddit.com#?#rpl-inbox-row:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i)
+reddit.com#?#rpl-inbox-row:has([data-testid="title"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#rpl-inbox-row:has([data-testid="body"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i))
+reddit.com#?#[data-testid="title"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i):upward(notification-item)
+reddit.com#?#[data-testid="body"]:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i):upward(notification-item)
+reddit.com#?#[data-testid="title"] span.line-clamp-2:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i):upward(notification-item)
+reddit.com#?#[data-testid="body"] span.line-clamp-2:has-text(/(?:\bIsrael\b|\bPalestin\w*\b|\bGaza\b|\bWest[\s_-]*Bank\b|\bgenocide\b|\bzio\w*\b|\bidf\b|\biof\b|\bNetanyah\w*\b|\bAIPAC\b)/i):upward(notification-item)
